@@ -18,47 +18,48 @@ const RadioGroup = React.forwardRef<
 });
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
-const radioGroupItemVariants = cva(`rounded-full`, {
-  variants: {
-    color: {
-      green: 'bg-green-7AC555',
-      purple: 'bg-purple-760DDE',
-      orange: 'bg-orange-FFA500',
-      blue: 'bg-blue-76A6EA',
-      pink: 'bg-pink-E876EA',
-    },
-    size: {
-      small: 'w-7 h-7',
-      large: 'w-[30px] h-[30px] ',
+const radioGroupItemVariants = cva(
+  `rounded-full w-7 h-7 md:w-[30px] md:h-[30px]`,
+  {
+    variants: {
+      color: {
+        green: 'bg-green-7AC555',
+        purple: 'bg-purple-760DDE',
+        orange: 'bg-orange-FFA500',
+        blue: 'bg-blue-76A6EA',
+        pink: 'bg-pink-E876EA',
+      },
     },
   },
-});
+);
 
 export interface RadioGroupItemProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof radioGroupItemVariants> {
   color: 'green' | 'purple' | 'orange' | 'blue' | 'pink';
-  size: 'small' | 'large';
   value: string;
 }
 
 const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   RadioGroupItemProps
->(({ className, color, size = 'large', ...props }, ref) => {
+>(({ className, color, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Item
       ref={ref}
-      className={cn(radioGroupItemVariants({ color, size }), className)}
+      className={cn(radioGroupItemVariants({ color }), className)}
       {...props}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-        <Image
-          src="/assets/icons/check.svg"
-          alt="선택됨"
-          width={size === 'small' ? 22 : 24}
-          height={size === 'small' ? 22 : 24}
-        />
+        <div className="relative w-[22px] h-[22px] md:w-[24px] md:h-[24px]">
+          <Image
+            src="/assets/icons/check.svg"
+            alt="선택됨"
+            className="w-full h-full"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );
