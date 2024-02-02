@@ -21,7 +21,7 @@ const radioGroupItemVariants = cva(`rounded-full w-7 h-7 md:w-[30px] md:h-[30px]
       blue: 'bg-blue-76A5EA',
       pink: 'bg-pink-E876EA',
     },
-  },
+  },}
 );
 
 export interface RadioGroupItemProps
