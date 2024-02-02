@@ -56,7 +56,7 @@ const TodoCardModal = () => {
             <div className="flex flex-col gap-1.5">
               <p className="font-Pretendard font-semibold text-[10px] md:text-xs">담당자</p>
               <div className="flex items-center gap-2">
-                <Avatar nickname="B"className="w-[34px] h-[34px]"/>
+                <Avatar size="m" nickname="B"/>
                 <p className="font-Pretendard text-xs md:text-sm text-black-333236">배유철</p>
               </div>
             </div>

@@ -21,18 +21,15 @@ const tagVariants = cva(`inline-flex items-center font-normal`, {
   },
 });
 
-export interface TagProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof tagVariants> {
+export interface TagProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof tagVariants> {
   variant: 'primary' | 'basic';
   size: 'small' | 'large';
   color?: 'orange' | 'green' | 'pink' | 'blue';
+  children: React.ReactNode;
 }
 
-function Chip({ className,variant, color, size = 'large', ...props }: TagProps) {
-  return (
-    <div className={cn(tagVariants({ variant, color, size }), className)} {...props} />
-  );
+function Chip({ className, variant, color, size = 'large', ...props }: TagProps) {
+  return <div className={cn(tagVariants({ variant, color, size }), className)} {...props} />;
 }
 
 export { Chip, tagVariants };

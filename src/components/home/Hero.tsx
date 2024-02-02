@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '../ui/button';
 
@@ -21,7 +22,7 @@ export default function Hero() {
 
       <div>
         <Button className="mt-16 py-3 w-[235px] bg-violet-5534DA text-sm md:mt-20 md:w-[280px] md:text-base lg:mt-24 text-white font-medium">
-          로그인하기
+          <Link href="/login">로그인하기</Link>
         </Button>
       </div>
     </div>
