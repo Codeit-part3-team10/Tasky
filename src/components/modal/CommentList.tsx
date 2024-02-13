@@ -81,14 +81,20 @@ function CommentList({ cardId, comments, setComments }: CommentListProps) {
                 control={control}
                 name="commentInput"
                 render={({ field: { ...rest } }) => (
-                  <form className="space-x-[6px] flex">
+                  <form
+                    className="space-x-[6px] flex"
+                    onSubmit={(e) => {
+                      e.preventDefault(); // 기본 submit 동작을 막음
+                      handleUpdateComment(comment?.id);
+                    }}
+                  >
                     <input
                       type="text"
                       {...rest}
                       placeholder={comment.content}
                       className="border border-gray30 rounded-md indent-[8px] placeholder:text-[12px] focus:outline-none"
                     />
-                    <button type="button" onClick={() => handleUpdateComment(comment?.id)} className="text-[12px]">
+                    <button type="button" className="text-[12px]">
                       완료
                     </button>
                   </form>
